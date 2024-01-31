@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#incrementButton').click(function() {
+                $.post('/counter', function(data) {
+                    $('#counterValue').text('Counter: ' + data.counter);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1 id="counterValue">Counter: {{ counter }}</h1>
+    <button id="incrementButton">Increment Counter</button>
+</body>
+</html>
+
