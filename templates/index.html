@@ -8,7 +8,7 @@
     <script>
         $(document).ready(function() {
             $('#incrementButton').click(function() {
-                $.post('/counter', function(data) {
+                $.post('/add', function(data) {
                     $('#counterValue').text('Counter: ' + data.counter);
                 });
             });

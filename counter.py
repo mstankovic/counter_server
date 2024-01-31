@@ -19,4 +19,5 @@ def update_counter():
     return jsonify({'counter': counter})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Use Gunicorn to serve the Flask app
+    app.run()
