@@ -18,6 +18,12 @@ def update_counter():
     counter += 1
     return jsonify({'counter': counter})
 
+@app.route('/reset', methods=['POST'])
+def reset_counter():
+    global counter
+    counter = 0
+    return jsonify({'counter': counter})
+
 if __name__ == '__main__':
     # Use Gunicorn to serve the Flask app
     app.run()

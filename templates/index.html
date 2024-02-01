@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +8,23 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#incrementButton').click(function() {
+            $('#incrementButton').click(function(e) {
+                e.preventDefault();  // Prevent the default form submission behavior
                 $.post('/add', function(data) {
+                    $('#counterValue').text('Counter: ' + data.counter);
+                });
+            });
+
+            $('#refreshButton').click(function(e) {
+                e.preventDefault();  // Prevent the default form submission behavior
+                $.get('/get', function(data) {
+                    $('#counterValue').text('Counter: ' + data.counter);
+                });
+            });
+
+            $('#resetButton').click(function(e) {
+                e.preventDefault();  // Prevent the default form submission behavior
+                $.post('/reset', function(data) {
                     $('#counterValue').text('Counter: ' + data.counter);
                 });
             });
@@ -18,6 +34,7 @@
 <body>
     <h1 id="counterValue">Counter: {{ counter }}</h1>
     <button id="incrementButton">Increment Counter</button>
+    <button id="refreshButton">Refresh</button>
+    <button id="resetButton">Reset</button>
 </body>
 </html>
-
